@@ -3,7 +3,7 @@ pipeline {
     environment {
         REGISTRY = 'roxsross12'
         IMAGEN_NAME = 'python_jenkins'
-        DOCKER_LOGIN = credentials('docker-hub')
+        DOCKER_HUB_LOGIN = credentials('docker-hub')
         TAG = '1.0.0'
     }
     stages {
@@ -19,12 +19,12 @@ pipeline {
 
             }
         }
-        // stage('Deploy') { 
-        //     steps {
-        //      sh 'sudo docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-        //      sh 'sudo docker push $REGISTRY/$IMAGEN_NAME:$TAG' 
-        //      echo "fin"
-        //     }
-        // }
+        stage('Deploy') { 
+            steps {
+             sh 'sudo docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+             sh 'sudo docker push $REGISTRY/$IMAGEN_NAME:$TAG' 
+             echo "fin"
+            }
+        }
     }
 }

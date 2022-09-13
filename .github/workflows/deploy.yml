@@ -10,8 +10,14 @@ env:
   IMAGEN_NAME: python
 
 jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
   docker:
     runs-on: ubuntu-latest
+    needs: init
     steps:
       -
         name: Set up QEMU
