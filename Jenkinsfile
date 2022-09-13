@@ -14,8 +14,8 @@ pipeline {
         }
         stage('build') { 
             steps {
-              sh 'sudo docker build -t $REGISTRY/$IMAGEN_NAME:$TAG .'
-              sh 'sudo docker images'
+              sh 'docker build -t $REGISTRY/$IMAGEN_NAME:$TAG .'
+              sh 'docker images'
 
             }
         }
