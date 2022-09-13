@@ -14,15 +14,15 @@ pipeline {
         }
         stage('build') { 
             steps {
-              sh 'docker build -t $REGISTRY/$IMAGEN_NAME:$TAG .'
-              sh 'docker images'
+              sh 'sudo docker build -t $REGISTRY/$IMAGEN_NAME:$TAG .'
+              sh 'sudo docker images'
 
             }
         }
         stage('Deploy') { 
             steps {
-             sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-             sh 'docker push $REGISTRY/$IMAGEN_NAME:$TAG' 
+             sh 'sudo docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+             sh 'sudo docker push $REGISTRY/$IMAGEN_NAME:$TAG' 
              echo "fin"
             }
         }
