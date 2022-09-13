@@ -21,8 +21,8 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-             sh 'sudo docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-             sh 'sudo docker push $REGISTRY/$IMAGEN_NAME:$TAG' 
+             sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+             sh 'docker push $REGISTRY/$IMAGEN_NAME:$TAG' 
              echo "fin"
             }
         }
